@@ -92,6 +92,35 @@
       100% { transform: scale(1); }
     }
 
+    /* ---------- REEL CAROUSEL ---------- */
+    .reel-container {
+      width: 100%;
+      overflow: hidden;
+      margin: 30px 0 40px;
+    }
+
+    .reel-track {
+      display: flex;
+      width: fit-content;
+      animation: reelScroll 25s linear infinite;
+    }
+
+    .reel-track img {
+      width: 220px;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 22px;
+      margin-right: 16px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.35);
+      border: 3px solid rgba(255,255,255,0.4);
+    }
+
+    @keyframes reelScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ---------- SINGLE PHOTO ---------- */
     .photo {
       max-width: 320px;
       width: 90%;
@@ -150,7 +179,24 @@
       11 years of love, memories, laughter — and forever to go ✨
     </div>
 
-    <!-- IMPORTANT: filename must match GitHub exactly -->
+    <!-- 📸 REEL CAROUSEL -->
+    <div class="reel-container">
+      <div class="reel-track">
+        <!-- ORIGINAL SET -->
+        <img src="us.jpg.JPG">
+        <img src="us1.jpg.JPG">
+        <img src="us2.jpg">
+        <img src="us3.jpg">
+
+        <!-- DUPLICATE FOR SMOOTH LOOP -->
+        <img src="us.jpg.JPG">
+        <img src="us1.jpg.JPG">
+        <img src="us2.jpg">
+        <img src="us3.jpg">
+      </div>
+    </div>
+
+    <!-- ORIGINAL SINGLE PHOTO -->
     <img src="us.jpg.JPG" alt="Us together" class="photo">
 
     <h2 id="question">Will you be my Valentine? 💕</h2>
@@ -162,7 +208,6 @@
   </div>
 
   <script>
-    /* 🎁 Open Gift */
     function openGift() {
       document.querySelector('.gift-box').classList.add('opened');
 
@@ -174,7 +219,6 @@
       }, 1200);
     }
 
-    /* 🎊 Confetti */
     function startConfetti() {
       setInterval(() => {
         confetti({
@@ -185,7 +229,6 @@
       }, 300);
     }
 
-    /* 💕 Valentine Question after 10 sec */
     function showQuestion() {
       setTimeout(() => {
         document.getElementById("question").style.opacity = 1;
